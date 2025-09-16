@@ -112,6 +112,7 @@
       
     </div>
   </header>
+  <div class="pattern-background"></div>
 
   <div class="below-hero-spacer"></div>
 
@@ -128,9 +129,145 @@
   </div>
 
   <!-- (rest of your site content goes here...) -->
-  <main style="padding:60px 24px; max-width:var(--max-width); margin:0 auto;">
-    <h2 id="abc-highlights">Key Highlights</h2>
-    <p>...section content...</p>
+   <section id="highlights-showcase" class="highlights-showcase">
+  <div class="highlights-wrapper">
+   <h2 class="showcase-title">
+  Key <span class="highlight">Highlights</span>
+  <span class="underline"></span>
+</h2>
+<p class="showcase-tagline" data-text="Experience Africa’s financial revolution."></p>
+
+
+    <div class="showcase-grid">
+  <div class="showcase-card">
+    <div class="card-icon">
+      <img src="img/btcm.png" alt="Bitcoin Mining">
+    </div>
+    <h3 class="card-title">⚡ Bitcoin Mining at Scale</h3>
+    <p class="card-desc">Powered by Africa’s renewable and stranded energy.</p>
+    <div class="card-glow glow1"></div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="card-icon">
+      <img src="img/treasure.png" alt="Treasury Management">
+    </div>
+    <h3 class="card-title">💰 Treasury Management</h3>
+    <p class="card-desc">Secure Bitcoin reserves for corporations and governments.</p>
+    <div class="card-glow glow2"></div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="card-icon">
+      <img src="img/africa.png" alt="Africa’s Future">
+    </div>
+    <h3 class="card-title">🌍 Africa’s Future</h3>
+    <p class="card-desc">Building financial sovereignty through Bitcoin.</p>
+    <div class="card-glow glow3"></div>
+  </div>
+</div>
+
+    <!-- Floating glow elements -->
+    <div class="floating-glow glow1"></div>
+    <div class="floating-glow glow2"></div>
+    <div class="floating-glow glow3"></div>
+  </div>
+</section>
+
+<section id="about-abc" class="about-abc">
+  <div class="about-abc-container">
+
+    <div class="about-abc-left">
+      <h2 class="about-abc-title highlight">About Us </h2>
+      
+
+      <div class="about-tabs">
+        <button class="tab-btn active" data-tab="mission">Our Mission</button>
+        <button class="tab-btn" data-tab="vision">Our Vision</button>
+        <button class="tab-btn" data-tab="why">Why Now?</button>
+      </div>
+
+      <div class="about-tab-content">
+
+        <div class="tab-panel active" id="mission">
+          <p>
+            African Bitcoin Holdings (ABH) is pioneering Africa’s role in the global Bitcoin economy.
+            We provide treasury management services and build sustainable Bitcoin mining infrastructure
+            to secure Africa’s place in the digital monetary revolution.
+          </p>
+        </div>
+
+        <div class="tab-panel" id="vision">
+          <p>
+            To make Africa a global custodian of Bitcoin reserves, monetizing untapped energy while
+            enabling institutions and governments to hedge against inflation and currency volatility.
+          </p>
+        </div>
+
+        <div class="tab-panel" id="why">
+          <ul>
+            <li>Rising inflation and currency depreciation across African markets.</li>
+            <li>Vast untapped renewable and natural gas energy sources.</li>
+            <li>Global shift towards Bitcoin as a strategic reserve asset.</li>
+          </ul>
+          <p class="about-abc-highlight">
+            <strong>ABH is Africa’s answer to this opportunity.</strong>
+          </p>
+        </div>
+
+      </div>
+
+      <a href="#" class="about-abc-btn">Get Started</a>
+    </div>
+
+    <div class="about-abc-right">
+      <img src="img/blog/1.jpg" alt="Mission Image" class="tab-image active" id="img-mission">
+      <img src="img/blog/3.jpg" alt="Vision Image" class="tab-image" id="img-vision">
+      <img src="img/blog/5.jpg" alt="Why Image" class="tab-image" id="img-why">
+    </div>
+
+  </div>
+</section>
+
+<section id="solutions" class="solutions-area">
+  <div class="solutions-container">
+    <div class="solutions-header">
+      <h2 class="solutions-title highlight">Solutions</h2>
+      <span class="underline"></span>
+      <p>Innovative services driving Africa’s participation in the global Bitcoin economy.</p>
+    </div>
+
+    <div class="solutions-wrapper">
+      <!-- Slide 1 -->
+      <div class="solution-slide">
+        <div class="solution-content">
+          <div class="solution-icon">💼</div>
+          <h3 class="solution-title">Treasury<span style="color: #ff8a3a;"> Management </span></h3>
+          <p class="solution-desc" data-text="Secure Bitcoin custody for corporations, institutions, and governments. Structured accumulation plans (SCA) to steadily build reserves. Advisory on integrating Bitcoin into balance sheets. Bitcoin-backed lending and yield strategies through trusted global partners."></p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="solution-slide">
+        <div class="solution-content">
+          <div class="solution-icon">⚡</div>
+          <h3 class="solution-title">Bitcoin Mining & <span style="color: #ff8a3a;"> Accumulation</span></h3>
+          <p class="solution-desc" data-text="Mining powered by hydro, solar, and natural gas across Africa. Low-cost energy arbitrage ensures global competitiveness. Focus on long-term accumulation: mined Bitcoin held as reserves, not liquidated."></p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="solution-slide">
+        <div class="solution-content">
+          <div class="solution-icon">📊</div>
+          <h3 class="solution-title">Strategic <span style="color: #ff8a3a;"> Infrastructure</span></h3>
+          <p class="solution-desc" data-text="AI-powered treasury dashboards for real-time visibility. African Bitcoin Accumulation Fund (ABAF) for pooled participation. Policy engagement to support Bitcoin-friendly frameworks. Research and education for African stakeholders."></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- add rest of sections for about/solutions/impact as implemented earlier -->
 	 <!-- Key Highlights Section 
@@ -213,6 +350,7 @@
     </div>
   </div>
 </section>
+
 
 
 
@@ -534,11 +672,11 @@
 	<!-- Blog section end -->
 
 
-	<!-- Footer -->
+	<!-- Footer 
 <footer class="abc-footer">
   <div class="footer-container">
     <div class="footer-grid">
-      <!-- Logo & About -->
+      <!-- Logo & About 
       <div class="footer-brand">
         <img src="img/abh.png" alt="African Bitcoin Holdings Logo" class="footer-logo">
         <p class="footer-text">
@@ -546,7 +684,7 @@
         </p>
       </div>
 
-      <!-- Navigation -->
+      <!-- Navigation 
       <div class="footer-links">
         <h5>Explore</h5>
         <ul>
@@ -566,14 +704,14 @@
           <a href="#"><i class="fa fa-linkedin"></i></a>
           <a href="#"><i class="fa fa-instagram"></i></a>
         </div>
-      </div>-->
+      </div>
     </div>
 
     <div class="footer-bottom">
       <p>© <span id="year"></span> African Bitcoin Holdings. All rights reserved.</p>
     </div>
   </div>
-</footer>
+</footer>-->
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -685,5 +823,97 @@
     }, { passive:true });
 
   </script>
+  <script>
+/* Robust scroll-driven panel swapping (works reliably)
+   - Only one panel active at any moment
+   - Title blur -> sharp based on progress
+   - Uses RAF for smoothness
+*/
+
+(function(){
+  const section = document.getElementById('highlights-section');
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  const title = document.getElementById('highlightsTitle');
+
+  // recalc on resize
+  let sectionTop = 0, sectionHeight = 0;
+  function calc() {
+    const rect = section.getBoundingClientRect();
+    sectionTop = rect.top + window.scrollY;
+    sectionHeight = section.offsetHeight;
+  }
+  calc();
+  window.addEventListener('resize', calc, {passive:true});
+
+  // clamp helper
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  // animation frame loop
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  function update(){
+    ticking = false;
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+
+    // start when section top reaches ~25% down viewport, end when bottom passes same point
+    const start = sectionTop - vh * 0.25;
+    const end = sectionTop + sectionHeight - vh * 0.25;
+    const raw = (scrollY - start) / (end - start);
+    const progress = clamp(raw, 0, 1); // 0..1
+
+    // show title once we are partly into the section
+    if (progress > 0.02) {
+      title.classList.add('is-visible');
+    } else {
+      title.classList.remove('is-visible');
+    }
+
+    // reduce title blur gradually as progress grows (8px -> 0)
+    const blurVal = 8 * (1 - clamp(progress * 1.6, 0, 1)); // faster unblur
+    title.style.filter = `blur(${blurVal}px)`;
+
+    // split into N steps
+    const N = panels.length;
+    const step = 1 / N;
+    let activeIndex = Math.min(Math.floor(progress / step), N - 1);
+
+    // add small hysteresis so quick scroll doesn't flicker:
+    // compute local progress inside the active step (0..1)
+    const localStart = activeIndex * step;
+    const localProgress = clamp((progress - localStart) / step, 0, 1);
+
+    panels.forEach((p, i) => {
+      if (i === activeIndex) {
+        // active panel fades in; we can optionally modulate transform using localProgress
+        p.classList.add('active');
+        p.setAttribute('aria-hidden','false');
+        // subtle micro transform based on localProgress (pop-in)
+        const pop = 0.98 + 0.02 * localProgress;
+        p.style.transform = `translate(-50%,-50%) translateY(${(1-localProgress)*10}px) scale(${pop})`;
+      } else {
+        p.classList.remove('active');
+        p.setAttribute('aria-hidden','true');
+        p.style.transform = '';
+      }
+    });
+  }
+
+  // initial update
+  update();
+
+  // handle keyboard / page show
+  window.addEventListener('pageshow', calc);
+})();
+</script>
+
+
 </body>
 </html>

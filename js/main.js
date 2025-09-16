@@ -175,44 +175,120 @@ document.addEventListener("DOMContentLoaded", () => {
 
   solutionCards.forEach((card) => observer.observe(card));
 });
-// Animate image on scroll
-document.addEventListener("DOMContentLoaded", () => {
-  const aboutImage = document.querySelector(".about-abc-image img");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          aboutImage.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
+// Header & tagline reveal + typewriter for tagline
+const header = document.querySelector('.showcase-title');
+const tagline = document.querySelector('.showcase-tagline');
+const text = tagline.dataset.text;
 
-  observer.observe(aboutImage);
+let taglineIndex = 0;
+
+function typeWriter() {
+  if (taglineIndex < text.length) {
+    tagline.textContent += text.charAt(taglineIndex);
+    taglineIndex++;
+    setTimeout(typeWriter, 50);
+  }
+}
+
+function revealHeader() {
+  const trigger = window.innerHeight / 1.1;
+  if (header.getBoundingClientRect().top < trigger) {
+    header.classList.add('visible');
+    tagline.classList.add('visible');
+    typeWriter();
+  }
+}
+
+window.addEventListener('scroll', revealHeader);
+window.addEventListener('load', revealHeader);
+// Animate cards on scroll
+const cards = document.querySelectorAll('.showcase-card');
+
+function revealCards() {
+  const triggerBottom = window.innerHeight / 1.1;
+
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+
+    if (cardTop < triggerBottom) {
+      card.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealCards);
+window.addEventListener('load', revealCards);
+// Tabs interaction
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+const tabImages = document.querySelectorAll('.tab-image');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+
+    // Update tabs
+    tabButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Update panels
+    tabPanels.forEach(panel => {
+      panel.classList.toggle('active', panel.id === target);
+    });
+
+    // Update images
+    tabImages.forEach(img => {
+      img.classList.toggle('active', img.id === `img-${target}`);
+    });
+  });
 });
-// Animate highlight cards when in view
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".highlight-card");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
+// Scroll reveal
+const revealElements = document.querySelectorAll('.about-abc-title, .tab-panel, .tab-image');
 
-  cards.forEach((card) => observer.observe(card));
-});
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const hero = document.querySelector(".hero-container");
-  const opacity = Math.max(1 - scrollY / 400, 0);
-  hero.style.opacity = opacity;
-  hero.style.filter = `blur(${Math.min(scrollY / 40, 20)}px)`;
-});
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight / 1.1;
+
+  revealElements.forEach(el => {
+    if (el.getBoundingClientRect().top < triggerBottom) {
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+// IntersectionObserver for fade-in
+const slides = document.querySelectorAll('.solution-slide');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('active');
+      typeWriter(entry.target.querySelector('.solution-desc'));
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(slide => observer.observe(slide));
+
+// Typewriter effect
+function typeWriter(element) {
+  if(element.getAttribute('data-typed')) return; // prevent retyping
+  const text = element.getAttribute('data-text');
+  element.setAttribute('data-typed', true);
+  element.textContent = '';
+  element.style.opacity = 1;
+  let i = 0;
+  const speed = 20; // ms per character
+  function type() {
+    if(i < text.length){
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
