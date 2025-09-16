@@ -44,63 +44,102 @@
 		<div class="loader"></div>
 	</div>
 
-	<!-- Header section -->
-	<header class="header-section clearfix">
-		<div class="container-fluid">
-			<a href="index.html" class="site-logo">
-				<img id="ddd" src="img/abh.png" alt="">
-			</a>
-			<div class="responsive-bar"><i class="fa fa-bars"></i></div>
-			
-			
-			<nav class="main-menu">
-				<ul class="menu-list">
-					<li><a href="#abc-highlights">Key Highlights</a></li>
-					<li><a href="#about-abc">About</a></li>
-					<li><a href="#solutions">Solutions</a></li>
-					<li><a href="#impact">Impact</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-	<!-- Header section end -->
+	 <!-- HEADER: centered white nav inside hero -->
+  <div class="abc-header">
+    <nav class="abc-nav" role="navigation" aria-label="Main navigation">
+      <div class="abc-logo">
+        <!-- swap with your logo -->
+        <img src="img/AHC.svg" alt="ABC logo" />
+        
+      </div>
 
+      <ul class="abc-nav-list" role="menubar">
+        <li><a href="#abc-highlights">Highlights</a></li>
+        <li><a href="#about-abc">About</a></li>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-<!-- Hero Section -->
-<section class="hero-banner">
-  <div class="hero-overlay"></div>
-  <div class="hero-container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Africa’s <span class="highlight">Bitcoin</span><br>
+      <a href="#contact" class="abc-nav-cta" aria-label="Partner with us">Partner</a>
+
+      <button class="abc-mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header class="abc-hero" id="top-hero">
+    <!-- video layer (desktop & mobile different sources) -->
+    <div class="abc-video-wrap" aria-hidden="true">
+      <!-- Desktop video -->
+      <video class="abc-video abc-video--desktop" autoplay muted loop playsinline>
+        <source src="img/btc-vid.mp4" type="video/mp4">
+        <!-- fallback image -->
+        <img src="img/btc-vid.mp4" alt="">
+      </video>
+
+      <!-- Mobile video (only displayed for small screens by CSS) -->
+      <video class="abc-video abc-video--mobile" autoplay muted loop playsinline>
+        <source src="img/btc-vid.mp4" type="video/mp4">
+        <img src="assets/hero-fallback.jpg" alt="">
+      </video>
+    </div>
+
+    <!-- BTC rolling coin in center -->
+  
+
+    <!-- hero inner -->
+    <div class="abc-hero-inner" id="heroInner">
+      <div class="abc-hero-copy">
+        <div class="abc-eyebrow">African Bitcoin Corporation</div>
+        <h1 class="abc-hero-title" id="heroTitle">
+          Africa’s <span class="abc-highlight">Bitcoin</span><br>
           Treasury & Mining Future
         </h1>
-        <p class="hero-subtitle">
-          Harnessing Africa’s abundant energy to build sustainable Bitcoin reserves
-          for corporations, institutions, and nations.
+
+        <p class="abc-hero-sub" id="heroSub">
+          Harnessing Africa’s abundant energy to build sustainable Bitcoin reserves for corporations, institutions, and nations.
         </p>
-        <div class="hero-buttons">
-          <a href="mailto:info@africanbitcoinholdings.com" class="btn-primary">🤝 Partner With Us</a>
-          
+
+        <div class="abc-hero-cta" id="heroCtas">
+          <a class="abc-btn-primary" href="mailto:partnerships@africanbitcoin.co">🤝 Partner With Us</a>
+         
         </div>
+
+       
       </div>
-      <div class="hero-media">
-        <img src="img/laptop.png" alt="Bitcoin Mining Dashboard" class="hero-graphic">
-      </div>
+
+      
+    </div>
+  </header>
+
+  <div class="below-hero-spacer"></div>
+
+  <!-- Mobile nav panel (hidden by default) -->
+  <div class="abc-mobile-panel" id="mobilePanel" aria-hidden="true">
+    <div class="abc-mobile-menu" role="menu" aria-label="Mobile menu">
+      <a href="#abc-highlights">Highlights</a>
+      <a href="#about-abc">About</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:partnerships@africanbitcoin.co" class="abc-nav-cta" style="align-self:center; margin-top:8px">Partner</a>
     </div>
   </div>
-</section>
-<!-- Hero Section End -->
 
-	 <!-- Key Highlights Section -->
+  <!-- (rest of your site content goes here...) -->
+  <main style="padding:60px 24px; max-width:var(--max-width); margin:0 auto;">
+    <h2 id="abc-highlights">Key Highlights</h2>
+    <p>...section content...</p>
+
+    <!-- add rest of sections for about/solutions/impact as implemented earlier -->
+	 <!-- Key Highlights Section 
 <section id="abc-highlights" class="abc-highlights">
   <div class="abc-highlights-container">
     <h2 class="abc-highlights-title">Key Highlights</h2>
 
     <div class="abc-highlights-grid">
-      <!-- Highlight 1 -->
+      <!-- Highlight 1 
       <div class="highlight-card">
         <div class="highlight-icon">
       <img src="img/btcm.png" alt="Africa's Future">
@@ -109,7 +148,7 @@
         <p>Powered by Africa’s renewable and stranded energy.</p>
       </div>
 
-      <!-- Highlight 2 -->
+      <!-- Highlight 2 
       <div class="highlight-card">
         <div class="highlight-icon">
           <img src="img/treasure.png" alt="Africa's Future">
@@ -118,7 +157,7 @@
         <p>Secure Bitcoin reserves for corporations and governments.</p>
       </div>
 
-      <!-- Highlight 3 -->
+      <!-- Highlight 3 
       <div class="highlight-card">
         <div class="highlight-icon">
           <img src="img/africa.png" alt="Africa's Future">
@@ -131,7 +170,7 @@
 </section>
 
 
-	<!-- About Us Section -->
+	<!-- About Us Section 
 <section id="about-abc" class="about-abc">
   <div class="about-abc-container">
     <div class="about-abc-content">
@@ -177,8 +216,8 @@
 
 
 
-	<!-- Solutions section -->
-<!-- Solutions Section -->
+	<!-- Solutions section 
+<!-- Solutions Section 
 <section id="solutions" class="solutions-area">
   <div class="solutions-container">
     <div class="solutions-header">
@@ -187,7 +226,7 @@
     </div>
 
     <div class="solutions-grid">
-      <!-- Treasury Management -->
+      <!-- Treasury Management 
       <div class="solution-card">
         <div class="solution-icon">💼</div>
         <h3>Treasury Management</h3>
@@ -199,7 +238,7 @@
         </p>
       </div>
 
-      <!-- Bitcoin Mining & Accumulation -->
+      <!-- Bitcoin Mining & Accumulation
       <div class="solution-card">
         <div class="solution-icon">⚡</div>
         <h3>Bitcoin Mining &amp; Accumulation</h3>
@@ -210,7 +249,7 @@
         </p>
       </div>
 
-      <!-- Strategic Infrastructure -->
+      <!-- Strategic Infrastructure 
       <div class="solution-card">
         <div class="solution-icon">📊</div>
         <h3>Strategic Infrastructure</h3>
@@ -226,7 +265,7 @@
 </section>
 <!-- Features section end -->
 
-<!-- Impact Section -->
+<!-- Impact Section 
 <section id="impact" class="impact-section">
   <div class="container">
     <h2 class="impact-title">Impact</h2>
@@ -255,12 +294,12 @@
   </div>
 </section>
 
-<!-- Roadmap Section -->
+<!-- Roadmap Section 
 <section id="roadmap" class="roadmap-section">
   <div class="container">
     <h2 class="roadmap-title">Roadmap</h2>
     <div class="timeline">
-      <!-- Phase 1 -->
+      <!-- Phase 1 
       <div class="timeline-item">
         <div class="timeline-icon">✅</div>
         <div class="timeline-content">
@@ -268,7 +307,7 @@
           <p>Pilot mining farm (10–20MW), treasury platform launch.</p>
         </div>
       </div>
-      <!-- Phase 2 -->
+      <!-- Phase 2 
       <div class="timeline-item">
         <div class="timeline-icon">🔄</div>
         <div class="timeline-content">
@@ -276,7 +315,7 @@
           <p>Scale to 100MW mining capacity, onboard corporate treasury clients, launch ABAF.</p>
         </div>
       </div>
-      <!-- Phase 3 -->
+      <!-- Phase 3 
       <div class="timeline-item">
         <div class="timeline-icon">🔮</div>
         <div class="timeline-content">
@@ -287,7 +326,7 @@
     </div>
   </div>
 </section>
-<!-- Partners & Stakeholders Section -->
+<!-- Partners & Stakeholders Section 
 <section id="partners" class="partners-section">
   <div class="container">
     <h2 class="partners-title">Partners &amp; Stakeholders</h2>
@@ -319,14 +358,14 @@
   </div>
 </section>
 
-<!-- Contact Us Section -->
+<!-- Contact Us Section
 <section id="contact" class="contact-section">
   <div class="container">
     <h2 class="contact-title">Contact Us</h2>
     <p class="contact-subtitle">Partner with African Bitcoin Holdings.</p>
 
     <div class="contact-grid">
-      <!-- Email -->
+      <!-- Email 
       <div class="contact-card">
         <div class="contact-icon">📧</div>
         <h3>Email</h3>
@@ -337,7 +376,7 @@
         </p>
       </div>
 
-      <!-- Website -->
+      <!-- Website
       <div class="contact-card">
         <div class="contact-icon">🌍</div>
         <h3>Website</h3>
@@ -348,7 +387,7 @@
         </p>
       </div>
 
-      <!-- Locations -->
+      <!-- Locations 
       <div class="contact-card">
         <div class="contact-icon">📍</div>
         <h3>Locations</h3>
@@ -545,5 +584,106 @@
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	 <script>
+    /* ============================
+       INTERACTIONS & ANIMATIONS
+       ============================ */
+
+    // DOM nodes
+    const root = document.documentElement;
+    const hero = document.querySelector('.abc-hero');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSub = document.getElementById('heroSub');
+    const heroCtas = document.getElementById('heroCtas');
+    const heroInner = document.getElementById('heroInner');
+    const btcCoin = document.getElementById('btcCoin');
+    const heroGraphic = document.getElementById('heroGraphic');
+
+    // reveal animation on load
+    window.addEventListener('load', () => {
+      // slight delay so video loads and feels cinematic
+      setTimeout(()=> {
+        document.body.classList.add('abc-revealed');
+      }, 220);
+    });
+
+    // Scroll interaction: as user scrolls down, add blur class to reduce readability (cinematic)
+    const blurThreshold = 120; // px scrolled before blur increases
+    window.addEventListener('scroll', () => {
+      const sc = window.scrollY;
+      if(sc > blurThreshold) document.body.classList.add('abc-blur-on-scroll');
+      else document.body.classList.remove('abc-blur-on-scroll');
+
+      // subtle coin vertical parallax on scroll
+      const coinOffset = Math.min(40, sc * 0.08);
+      document.querySelector('.abc-coin-wrap').style.transform = `translate(-50%,-${5 + coinOffset}%)`;
+    }, { passive:true });
+
+    // Mouse parallax for hero graphic (desktop only)
+    function onPointerMove(e){
+      // only on wider screens
+      if(window.innerWidth < 880) return;
+      const rect = hero.getBoundingClientRect();
+      const cx = rect.left + rect.width/2;
+      const cy = rect.top + rect.height/2;
+      const dx = (e.clientX - cx) / rect.width;
+      const dy = (e.clientY - cy) / rect.height;
+      const tx = dx * 20; // translate amount
+      const ty = dy * 18;
+      // apply transform
+      heroGraphic.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${dx*2}deg)`;
+      // coin tilt for depth
+      btcCoin.style.transform = `rotateY(${dx*45}deg) rotateX(${dy*-18}deg)`;
+    }
+    window.addEventListener('pointermove', onPointerMove);
+
+    // Mobile nav open/close with zoom-in panel
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+
+    mobileToggle.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('open');
+      mobilePanel.setAttribute('aria-hidden', !open);
+      // trap focus? (keep simple here)
+    });
+
+    // close mobile panel on outside click or escape
+    mobilePanel.addEventListener('click', (e) => {
+      if(e.target === mobilePanel) {
+        mobilePanel.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') mobilePanel.classList.remove('open');
+    });
+
+    // Smooth scroll for nav anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        const href = a.getAttribute('href');
+        if(href.length > 1 && document.querySelector(href)) {
+          ev.preventDefault();
+          const to = document.querySelector(href).offsetTop - 80;
+          window.scrollTo({ top: to, behavior: 'smooth' });
+          // close mobile panel if open
+          mobilePanel.classList.remove('open');
+        }
+      });
+    });
+
+    // Accessibility: pause coin animation on reduce motion preference
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(media.matches){
+      btcCoin.style.animationPlayState = 'paused';
+    }
+
+    // Optional: tiny gentle zoom to background video on scroll for depth
+    window.addEventListener('scroll', () => {
+      const sc = window.scrollY;
+      const s = 1 + Math.min(0.06, sc / 5000); // tiny zoom
+      document.querySelectorAll('.abc-video').forEach(v => v.style.transform = `translate(-50%,-50%) scale(${s})`);
+    }, { passive:true });
+
+  </script>
 </body>
 </html>

@@ -209,3 +209,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cards.forEach((card) => observer.observe(card));
 });
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  const hero = document.querySelector(".hero-container");
+  const opacity = Math.max(1 - scrollY / 400, 0);
+  hero.style.opacity = opacity;
+  hero.style.filter = `blur(${Math.min(scrollY / 40, 20)}px)`;
+});
