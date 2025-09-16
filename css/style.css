@@ -1645,8 +1645,10 @@ ol {
 @media only screen and (max-width: 767px) {
 	.header-section {
 		padding: 30px 0;
-		background: #fff;
+		
 	}
+	
+	
 	.header-section .responsive-bar {
 		float: right;
 		font-size: 25px;
@@ -1824,6 +1826,10 @@ ol {
 	.comment .comment-content {
 		padding-left: 0;
 	}
+	#ddd{
+	width: 180px;
+	padding-left: 30px;
+}
 }
 .site-logo img{
 	width: 300px;
@@ -2321,7 +2327,7 @@ ol {
 }
 
 .about-abc-image {
-  flex: 1 1 500px;
+  flex: 1 1 ;
   text-align: center;
   position: relative;
 }
@@ -2667,5 +2673,19 @@ ol {
   }
   .social-icons {
     justify-content: center;
+  }
+  .hero-title{
+	font-size: 24px;
+  }
+  .hero-subtitle{
+	font-size: 18px;
+  }
+  .hero-media{
+	display: none;
+  }
+  .about-ABH-block{
+	margin-left: 20px;
+	margin-right: 20px;
+	text-align: left;
   }
 }
