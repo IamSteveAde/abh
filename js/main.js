@@ -292,3 +292,50 @@ function typeWriter(element) {
   }
   type();
 }
+const impactCards = document.querySelectorAll('.impact-item');
+
+function revealImpact() {
+  const trigger = window.innerHeight * 0.85;
+  impactCards.forEach((card, index) => {
+    const top = card.getBoundingClientRect().top;
+    if (top < trigger) {
+      setTimeout(() => card.classList.add('in-view'), index * 150);
+    }
+  });
+}
+
+window.addEventListener('scroll', revealImpact);
+revealImpact();
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".roadmap-item");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const partnerCards = document.querySelectorAll(".partner-card");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add("show"), idx * 200);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  partnerCards.forEach(card => observer.observe(card));
+});
+window.addEventListener('scroll', () => {
+  const section = document.querySelector('#contact');
+  const rect = section.getBoundingClientRect();
+  if (rect.top < window.innerHeight * 0.8) {
+    section.classList.add('animate');
+  }
+});
