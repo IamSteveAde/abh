@@ -461,3 +461,220 @@ document.addEventListener('DOMContentLoaded', () => {
   // Also run once on load after a short delay (ensures CSS media queries applied)
   window.addEventListener('load', () => setTimeout(recalcPanels, 120));
 })();
+(function () {
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // small throttle helper
+    function throttle(fn, wait = 150) {
+      let last = 0, t = null;
+      return function (...args) {
+        const now = Date.now();
+        if (last && now < last + wait) {
+          clearTimeout(t);
+          t = setTimeout(() => { last = Date.now(); fn.apply(this, args); }, wait - (now - last));
+        } else {
+          last = now;
+          fn.apply(this, args);
+        }
+      };
+    }
+
+    // Use a unique local name so we don't collide with existing globals
+    const impactCards = Array.from(document.querySelectorAll('.nova-card'));
+    if (!impactCards.length) {
+      console.warn('[impact-anim] no .nova-card elements found.');
+      return;
+    }
+
+    const options = { threshold: 0.25 };
+
+    function handleIntersect(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        } else {
+          entry.target.classList.remove('is-visible'); // remove to allow replay on re-enter
+        }
+      });
+    }
+
+    // IntersectionObserver path (preferred)
+    if ('IntersectionObserver' in window) {
+      const impactObserver = new IntersectionObserver(handleIntersect, options);
+      impactCards.forEach(c => impactObserver.observe(c));
+      // Optional debug handle (non-conflicting)
+      window.__impactAnim = { observer: impactObserver };
+    } else {
+      // Fallback for older browsers: viewport check with throttled scroll
+      function checkInView() {
+        const h = window.innerHeight || document.documentElement.clientHeight;
+        impactCards.forEach(el => {
+          const r = el.getBoundingClientRect();
+          const inView = (r.top < h * 0.85) && (r.bottom > h * 0.15);
+          el.classList.toggle('is-visible', !!inView);
+        });
+      }
+      checkInView();
+      window.addEventListener('scroll', throttle(checkInView, 120), { passive: true });
+      window.addEventListener('resize', throttle(checkInView, 200));
+      window.__impactAnim = { fallback: true };
+    }
+
+    // If new .nova-card nodes are added dynamically, observe them too
+    if ('MutationObserver' in window) {
+      const mo = new MutationObserver(muts => {
+        let added = [];
+        muts.forEach(m => {
+          m.addedNodes && m.addedNodes.forEach(n => {
+            if (n.nodeType === 1 && n.matches && n.matches('.nova-card')) added.push(n);
+            // also check subtree for inserted cards
+            if (n.querySelectorAll) added.push(...Array.from(n.querySelectorAll('.nova-card')));
+          });
+        });
+        if (added.length) {
+          // ensure unique entries
+          const newOnes = added.filter(a => !impactCards.includes(a));
+          newOnes.forEach(n => {
+            impactCards.push(n);
+            if (window.__impactAnim && window.__impactAnim.observer) {
+              window.__impactAnim.observer.observe(n);
+            } else {
+              // if fallback path, run a visibility check immediately
+              n.classList.toggle('is-visible', (n.getBoundingClientRect().top < (window.innerHeight * 0.85)));
+            }
+          });
+        }
+      });
+      mo.observe(document.body, { childList: true, subtree: true });
+      window.__impactAnim.mo = mo;
+    }
+
+  }); // DOMContentLoaded
+})();
+/* ---------- Safe, self-contained reveal script for .stellar-node ----------
+   - uses IntersectionObserver when available
+   - falls back to a rAF-based scroll check if not
+   - automatically calculates a subtle per-node stagger (doesn't collide with
+     other observer variables)
+*/
+(function () {
+  document.addEventListener('DOMContentLoaded', () => {
+    const NODE_SEL = '.stellar-node';
+    const nodes = Array.from(document.querySelectorAll(NODE_SEL));
+    if (!nodes.length) return;
+
+    // set data-order attributes for predictable fallback staggering
+    nodes.forEach((n, i) => n.setAttribute('data-order', String(i)));
+
+    // small helper: compute a small delay based on position in viewport
+    function computeDelay(rect, vh) {
+      // normalized 0..1 (top..bottom)
+      const top = Math.max(0, Math.min(rect.top, vh));
+      const normalized = 1 - Math.min(1, top / vh);
+      // produce a delay 0s..0.22s biased by vertical position
+      return (1 - normalized) * 0.22;
+    }
+
+    function revealElement(el, delay) {
+      if (typeof delay === 'number') el.style.setProperty('--stagger', `${delay}s`);
+      el.classList.add('revealed');
+    }
+    function hideElement(el, delay) {
+      if (typeof delay === 'number') el.style.setProperty('--stagger', `${delay}s`);
+      el.classList.remove('revealed');
+    }
+
+    const THRESH = 0.18;
+    const ROOT_MARGIN = '0px 0px -8% 0px';
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const el = entry.target;
+          const rect = el.getBoundingClientRect();
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+          const d = computeDelay(rect, vh);
+          if (entry.isIntersecting) {
+            revealElement(el, d);
+          } else {
+            // remove to allow replay when re-entering view
+            hideElement(el, d);
+          }
+        });
+      }, { threshold: THRESH, rootMargin: ROOT_MARGIN });
+
+      nodes.forEach(n => io.observe(n));
+
+      // expose for debug but avoid collisions
+      window.__stellarNodeObserver = io;
+      return;
+    }
+
+    // Fallback: rAF-based visibility check (safe, no global observer)
+    let ticking = false;
+    function check() {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      nodes.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const inView = rect.top < vh * (1 - THRESH) && rect.bottom > vh * THRESH;
+        const d = computeDelay(rect, vh);
+        el.style.setProperty('--stagger', `${d}s`);
+        el.classList.toggle('revealed', !!inView);
+      });
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(check);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    // initial check
+    onScroll();
+  });
+})();
+/* ====== Scroll reveal for the cards (self-contained) ====== */
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.stellar-card');
+  if (!cards.length) return;
+
+  function revealCards() {
+    const vh = window.innerHeight;
+    cards.forEach((card, i) => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < vh * 0.85) {
+        card.classList.add('reveal');
+      } else {
+        card.classList.remove('reveal');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealCards, { passive: true });
+  window.addEventListener('resize', revealCards);
+  revealCards(); // initial check
+});
+/* ====== Scroll reveal for image & form ====== */
+document.addEventListener('DOMContentLoaded', () => {
+  const revealEls = document.querySelectorAll('.orbit-image-wrapper, .orbit-form-container');
+
+  function revealOnScroll() {
+    const vh = window.innerHeight;
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < vh * 0.85){
+        el.classList.add('reveal');
+      } else {
+        el.classList.remove('reveal');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll, { passive: true });
+  window.addEventListener('resize', revealOnScroll);
+  revealOnScroll();
+});
