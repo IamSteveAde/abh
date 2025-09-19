@@ -339,3 +339,125 @@ window.addEventListener('scroll', () => {
     section.classList.add('animate');
   }
 });
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  item.querySelector('.faq-question').addEventListener('click', () => {
+    // Toggle active class
+    item.classList.toggle('active');
+
+    // Close others if needed
+    faqItems.forEach(other => {
+      if(other !== item) other.classList.remove('active');
+    });
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = document.querySelectorAll('.conv-subtitle, .conv-title, .conv-desc');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+      } else {
+        entry.target.classList.remove('in-view');
+      }
+    });
+  }, {
+    threshold: 0.3 // triggers when 30% visible
+  });
+
+  elements.forEach(el => observer.observe(el));
+});
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ===== Split text into words and characters (preserve <span>, <br>) =====
+  function fragmentFromNode(node) {
+    const frag = document.createDocumentFragment();
+
+    node.childNodes.forEach(child => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        // Split by words but keep the whitespace
+        const words = child.textContent.split(/(\s+)/);
+        words.forEach(token => {
+          if (/^\s+$/.test(token)) {
+            frag.appendChild(document.createTextNode(token)); // plain space
+          } else {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'word';
+            for (const ch of token) {
+              const charSpan = document.createElement('span');
+              charSpan.className = 'char';
+              charSpan.textContent = ch;
+              wordSpan.appendChild(charSpan);
+            }
+            frag.appendChild(wordSpan);
+          }
+        });
+
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        if (child.tagName === 'BR') {
+          frag.appendChild(document.createElement('br'));
+        } else {
+          // Clone inline elements (like <span style="color">)
+          const clone = child.cloneNode(false);
+          clone.appendChild(fragmentFromNode(child));
+          frag.appendChild(clone);
+        }
+      }
+    });
+
+    return frag;
+  }
+
+  // ===== Prepare & observe all headings =====
+  document.querySelectorAll('.succession-title').forEach(title => {
+    const frag = fragmentFromNode(title);
+    title.innerHTML = '';
+    title.appendChild(frag);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const chars = entry.target.querySelectorAll('.char');
+
+        if (entry.isIntersecting) {
+          // Reset & add stagger delay
+          chars.forEach((ch, i) => {
+            ch.classList.remove('animate');
+            ch.style.animationDelay = `${i * 0.03}s`;
+          });
+
+          // Force reflow to restart animation
+          void entry.target.offsetWidth;
+
+          chars.forEach(ch => ch.classList.add('animate'));
+
+        } else {
+          // Remove class so it can replay
+          chars.forEach(ch => {
+            ch.classList.remove('animate');
+            ch.style.animationDelay = '';
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(title);
+  });
+
+});
+/* ===== Small JS helper: ensure layout recalcs on orientation change and initial load ===== */
+(function () {
+  function recalcPanels() {
+    // trigger resize handler already in your script (re-applies flex-basis & active panel)
+    window.dispatchEvent(new Event('resize'));
+  }
+
+  // On orientation change (mobile rotate), wait briefly then recalc
+  window.addEventListener('orientationchange', () => {
+    setTimeout(recalcPanels, 250);
+  });
+
+  // Also run once on load after a short delay (ensures CSS media queries applied)
+  window.addEventListener('load', () => setTimeout(recalcPanels, 120));
+})();
