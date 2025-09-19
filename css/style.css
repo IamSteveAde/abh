@@ -2563,7 +2563,7 @@ body {
   .plasma-track {
     width: 100%;    /* ✅ only one panel visible at a time */
   }
-
+ 
 
   .sol-copy {
     position: absolute;
