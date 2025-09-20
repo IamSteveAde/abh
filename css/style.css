@@ -3000,9 +3000,7 @@ body {
     left: 20px;
     transform: translateY(-50%);
   }
-  *{
-    outline: 1px solid red;
-  }
+ 
 }
 /* ---------- Stellar timeline reveal (left/right slide + inner lift + stagger) ---------- */
 .stellar-node {
