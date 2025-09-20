@@ -543,6 +543,7 @@ body {
   filter: drop-shadow(0 5px 20px rgba(255,138,58,0.5));
   animation: float 3s ease-in-out infinite;
   justify-self: center;
+
 }
 
 .card-title {
@@ -2517,6 +2518,11 @@ font-family: 'Gotham Light', sans-serif;
   }
   .card-icon img{
     justify-self: center;
+    
+  }
+  .card-icon{
+    margin-left: 30%;
+    margin-right: 30%;
   }
 
   /* Keep horizontal track behavior but ensure panels are full-width and stack content */
