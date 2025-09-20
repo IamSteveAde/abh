@@ -100,11 +100,7 @@
     
       
     }
-    .abc-team-photo img{
-  justify-self: center;
-  margin-left: 35%;
-  margin-right: 35%;
-}
+    
     .solatrix-shell{
       overflow-y: hidden;
     }
@@ -3345,7 +3341,7 @@ font-family: 'Gotham Light', sans-serif;
 .abc-team {
   padding: 100px 20px;
  
-  text-align: center;
+  text-align: left;
 }
 
 .abc-team-title {
@@ -3404,5 +3400,5 @@ font-family: 'Gotham Light', sans-serif;
   color: #555;
 }
 .abc-team-photo img{
-  justify-self: center;
+  justify-self: left;
 }
