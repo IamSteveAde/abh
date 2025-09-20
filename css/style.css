@@ -2502,6 +2502,22 @@ font-family: 'Gotham Light', sans-serif;
     min-height: auto;       /* no forced tall viewport that hides copy */
     padding: 0.5rem 0.5rem 1rem;
   }
+    .nebula-tab-underline {
+    position: absolute;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(255,214,168,0.98), rgba(255,138,58,0.9));
+    box-shadow: 0 6px 20px rgba(255,138,58,0.12);
+    opacity: 0;
+    transition: opacity .28s ease, transform .36s cubic-bezier(.2,.9,.28,1);
+  }
+  .card-icon img{
+    justify-self: center;
+  }
 
   /* Keep horizontal track behavior but ensure panels are full-width and stack content */
   .plasma-track {
