@@ -3337,3 +3337,67 @@ font-family: 'Gotham Light', sans-serif;
   color: #030137;
 }
 
+.abc-team {
+  padding: 100px 20px;
+ 
+  text-align: center;
+}
+
+.abc-team-title {
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  font-weight: 600;
+  color: #222;
+}
+
+.abc-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.abc-team-card {
+  
+  padding: 30px 25px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.abc-team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.abc-team-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #eee;
+}
+
+.abc-team-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 10px 0 5px;
+  color: #030137;
+}
+
+.abc-team-role {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.abc-team-bio {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+.abc-team-photo img{
+  justify-self: center;
+}
