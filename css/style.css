@@ -2878,7 +2878,7 @@ body {
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 3px;
+  width: 1px;
   background: linear-gradient(180deg, #ff8a3a, #ffbd5a);
   transform: translateX(-50%);
 }
@@ -2956,12 +2956,20 @@ body {
   .stellar-node,
   .stellar-node.is-left,
   .stellar-node.is-right {
-    width: 100vw;
+  
     padding-left: 4rem;
     text-align: left;
     left: -50px;
     margin-bottom: 3rem;
     font-size: 12px;
+    
+  }
+   .stellar-content {
+   width: 200px;
+   
+  }
+  .stellar-node{
+   
   }
   .stellar-points li{
     font-size: 12px;
@@ -2991,6 +2999,9 @@ body {
   .stellar-badge {
     left: 20px;
     transform: translateY(-50%);
+  }
+  *{
+    outline: 1px solid red;
   }
 }
 /* ---------- Stellar timeline reveal (left/right slide + inner lift + stagger) ---------- */
