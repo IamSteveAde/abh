@@ -100,6 +100,11 @@
     
       
     }
+    .abc-team-photo img{
+  justify-self: center;
+  margin-left: 35%;
+  margin-right: 35%;
+}
     .solatrix-shell{
       overflow-y: hidden;
     }
