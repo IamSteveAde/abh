@@ -57,11 +57,11 @@
       </div>
 
       <ul class="abc-nav-list" role="menubar">
-        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#abc-highlights">Highlights</a></li>
+        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#highlights-showcase">Highlights</a></li>
         <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#about-abc">About</a></li>
-        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#solutions">Solutions</a></li>
-        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#roadmap">Roadmap</a></li>
-        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#contact">Contact</a></li>
+        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#solatrix">Solutions</a></li>
+        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#stellar-map">Roadmap</a></li>
+        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#connect-hub">Contact</a></li>
       </ul>
 
       <a href="#contact" class="abc-nav-cta" aria-label="Partner with us">Partner</a>
@@ -122,11 +122,11 @@
   <!-- Mobile nav panel (hidden by default) -->
   <div class="abc-mobile-panel" id="mobilePanel" aria-hidden="true">
     <div class="abc-mobile-menu" role="menu" aria-label="Mobile menu">
-      <a href="#abc-highlights">Highlights</a>
+      <a href="#highlights-showcase">Highlights</a>
       <a href="#about-abc">About</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#contact">Contact</a>
+      <a href="#solatrix">Solutions</a>
+      <a href="#stellar-map">Roadmap</a>
+      <a href="#connect-hub">Contact</a>
       <a href="mailto:partnerships@africanbitcoin.co" class="abc-nav-cta" style="align-self:center; margin-top:8px">Partner</a>
     </div>
   </div>
@@ -1478,6 +1478,19 @@
   });
 </script>
 
+<script>
+  window.addEventListener('scroll', function () {
+    const nav = document.querySelector('.abc-nav');
+    const hero = document.getElementById('top-hero');
+    const heroHeight = hero.offsetHeight;
+
+    if (window.scrollY > heroHeight - 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
 
 
 </body>

@@ -10,37 +10,39 @@
       --max-width:1200px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0; font-family: 'Poppins', sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#fff;background:var(--bg-dark);-webkit-font-smoothing:antialiased}
+    html,body{height:100%;margin:0; font-family: 'Gotham Light', sans-serif; color:#fff;background:var(--bg-dark);-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
     /* -------------------------
        HEADER (centered white navbar inside hero)
        ------------------------- */
-    .abc-header {
-      position: absolute;
-      top: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 60;
-      width: min(920px, calc(100% - 40px));
-      display: flex;
-      justify-content: center;
-    }
+ .abc-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
 
-    .abc-nav {
-      display:flex;
-      align-items:center;
-      gap:28px;
-      background:transparent;
-      color: #f0f0f0;
-      padding:12px 26px;
-      border-radius:28px;
-      box-shadow: 0 10px 30px rgba(8,8,8,0.4);
-      align-items:center;
-      transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
-      backdrop-filter: blur(6px);
-    }
+  .abc-nav {
+  width: min(920px, calc(100% - 40px));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: transparent;
+  color: #f0f0f0;
+  padding: 12px 26px;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(8,8,8,0.4);
+  transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+  backdrop-filter: blur(6px);
+  justify-content: space-between;
+  
+}
 
     .abc-nav:hover{ transform: translateY(-4px) scale(1.01); box-shadow: 0 18px 40px rgba(8,8,8,0.45); text-decoration: none; }
 
@@ -90,7 +92,16 @@
       .abc-video--mobile{ display:block; }
       .abc-hero{ min-height:640px; padding-top:18px }
       .abc-header{ top:12px }
+      .abc-nav-cta{
+      font-size: 9px;
     }
+    .abc-logo img{
+      width: 100%;
+    
+      
+    }
+    }
+    
 
     /* subtle overlay or glow orbs */
     .abc-hero::before,
@@ -295,7 +306,7 @@
     --radius:20px;
   }
   *{box-sizing:border-box}
-  html,body{height:100%;margin:0;background:var(--bg); font-family: 'Poppins', sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--text);-webkit-font-smoothing:antialiased}
+  html,body{height:100%;margin:0;background:var(--bg); font-family: 'Gotham Light', sans-serif; color:var(--text);-webkit-font-smoothing:antialiased}
   a{color:inherit}
 
   /* SECTION */
@@ -443,7 +454,7 @@
   /* Basic resets */
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
   background: #fff;
   color: #111;
 }
@@ -473,7 +484,7 @@ body {
   transform: scale(0.5);
   opacity: 0;
   animation: zoomIn 1s forwards ease-out;
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Gotham Bold', sans-serif;
 }
 
 @keyframes zoomIn {
@@ -646,7 +657,7 @@ body {
   display: inline-block;
   background-size: 200% 100%;
   animation: gradientShift 3s infinite linear;
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Gotham Bold', sans-serif;
 }
 .chorus-subdesc {
   margin-top: .65rem;
@@ -657,7 +668,7 @@ body {
   color: rgba(255,255,255,0.88);
   margin-left: auto;
   margin-right: auto;
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Gotham Light', sans-serif;
 }
 
 
@@ -1009,7 +1020,7 @@ body {
 }
 body {
   margin: 0;
- font-family: 'Poppins', sans-serif;
+font-family: 'Gotham Light', sans-serif;
 }
 
 .solutions-area {
@@ -1220,7 +1231,7 @@ body {
 .roadmap-section {
  
   padding: 100px 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
 }
 
 .roadmap-title {
@@ -1327,7 +1338,7 @@ body {
 .partners-section {
   background: linear-gradient(135deg, #ffffff 0%, #f8f8ff 100%);
   padding: 100px 20px;
- font-family: 'Poppins', sans-serif;
+ font-family: 'Gotham Light', sans-serif;
 }
 
 .partners-title {
@@ -1413,7 +1424,7 @@ body {
   background: #000;
   color: #f0f0f0;
   padding: 60px 20px 30px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
 }
 
 .footer-container {
@@ -1539,7 +1550,7 @@ body {
 .about-abh-section {
   background: #fff;
   padding: 100px 20px;
-  font-family: "Poppins", sans-serif;
+ font-family: 'Gotham Light', sans-serif;
   color: #222;
   position: relative;
   overflow: hidden;
@@ -1681,7 +1692,7 @@ body {
 .faq-section {
  background-color: #030137;
   padding: 100px 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
   position: relative;
   overflow: hidden;
 }
@@ -1814,7 +1825,7 @@ body {
 .contact-section {
   background: #fff;
   padding: 100px 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
   position: relative;
   overflow: hidden;
 }
@@ -1964,7 +1975,7 @@ body {
   padding: 150px 20px;
   position: relative;
   overflow: hidden;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
 }
 
 .conviction-container {
@@ -2051,7 +2062,7 @@ body {
   position: relative;
   overflow: hidden;
   
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
 }
 
 .conviction-container {
@@ -2096,7 +2107,7 @@ body {
   line-height: 1.8;
 }
 .succession-title {
- font-family: 'Poppins', sans-serif;
+ font-family: 'Gotham Bold', sans-serif;
   font-size: 3rem;
   font-weight: 700;
   
@@ -2154,7 +2165,7 @@ body {
   position: relative;
   overflow: hidden;
  
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
 }
 }
 
@@ -2285,7 +2296,7 @@ body {
     background: linear-gradient(180deg, var(--bg-deep) 0%, #ff8a3a 100%);
     padding: 5vh 2vw;
     color: var(--white);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-family: 'Gotham Light', sans-serif;
   }
   .solatrixs-shell {
     background: linear-gradient(180deg, var(--bg-deeps) 0%, #030137 70%);
@@ -2617,7 +2628,7 @@ body {
 .orbit-impact {
  
   padding: 6vh 3vw;
-  font-family: Inter, ui-sans-serif, system-ui;
+ font-family: 'Gotham Light', sans-serif;
   color: var(--text-main);
   overflow-x: hidden;
   margin-top: 100px;
@@ -3066,7 +3077,7 @@ body {
   padding: 6vh 3vw;
 
   color: #111;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
 }
 
 .orbit-header {
@@ -3152,7 +3163,7 @@ body {
   display: flex;
   justify-content: center;
   
-  font-family: 'Inter', sans-serif;
+  font-family: 'Gotham Light', sans-serif;
   color: #111;
 }
 
@@ -3224,7 +3235,7 @@ body {
   border-radius: 8px;
   border: 1px solid #ddd;
   font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
+ font-family: 'Gotham Light', sans-serif;
   transition: all 0.3s ease;
 }
 .orbit-input:focus, .orbit-textarea:focus {
@@ -3257,3 +3268,42 @@ body {
     gap: 2rem;
   }
 }
+ @font-face {
+    font-family: 'Gotham Light';
+    src: url('/GOTHAM-LIGHT.TTF') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ @font-face {
+    font-family: 'Gotham Bold';
+    src: url('/GOTHAM-BOLD.TTF') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+/* Keep the whole header fixed */
+.abc-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: transparent;
+  transition: background-color 0.3s ease;
+}
+
+/* Center the nav content */
+.abc-header .abc-nav {
+ 
+  margin: 0 auto;         /* centers horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* keeps logo left, links right */
+  padding: 0 20px;        /* optional breathing room */
+}
+
+/* White background after scrolling */
+.abc-nav.scrolled {
+  background-color: #030137;
+  color: #030137;
+}
+
