@@ -2518,11 +2518,14 @@ font-family: 'Gotham Light', sans-serif;
   }
   .card-icon img{
     justify-self: center;
+    width: 70px;
+    height: 70px;
     
   }
   .card-icon{
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    
   }
 
   /* Keep horizontal track behavior but ensure panels are full-width and stack content */
