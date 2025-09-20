@@ -480,9 +480,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Use a unique local name so we don't collide with existing globals
-    const impactCards = Array.from(document.querySelectorAll('.nova-card'));
+    const impactCards = Array.from(document.querySelectorAll('.nova-cards'));
     if (!impactCards.length) {
-      console.warn('[impact-anim] no .nova-card elements found.');
+      console.warn('[impact-anim] no .nova-cards elements found.');
       return;
     }
 
@@ -526,9 +526,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let added = [];
         muts.forEach(m => {
           m.addedNodes && m.addedNodes.forEach(n => {
-            if (n.nodeType === 1 && n.matches && n.matches('.nova-card')) added.push(n);
+            if (n.nodeType === 1 && n.matches && n.matches('.nova-cards')) added.push(n);
             // also check subtree for inserted cards
-            if (n.querySelectorAll) added.push(...Array.from(n.querySelectorAll('.nova-card')));
+            if (n.querySelectorAll) added.push(...Array.from(n.querySelectorAll('.nova-cards')));
           });
         });
         if (added.length) {
