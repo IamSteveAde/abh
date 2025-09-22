@@ -696,18 +696,25 @@
         Whether you are a partner, investor, or wish to inquire about our services, fill out the form and we’ll respond promptly.
       </p>
 
-      <form class="orbit-form">
-        <input type="text" name="name" placeholder="Your Name" required class="orbit-input">
-        <input type="email" name="email" placeholder="Your Email" required class="orbit-input">
-        <select name="reason" required class="orbit-input">
-          <option value="">Select Reason</option>
-          <option value="partnership">Partnership Inquiry</option>
-          <option value="services">Service Inquiry</option>
-          <option value="general">General Question</option>
-        </select>
-        <textarea name="message" rows="5" placeholder="Your Message" required class="orbit-textarea"></textarea>
-        <button type="submit" class="orbit-btn">Send Message</button>
-      </form>
+      <!-- Contact Form -->
+<form id="orbitForm" class="orbit-form">
+  <input type="text" name="name" placeholder="Your Name" required class="orbit-input">
+  <input type="email" name="email" placeholder="Your Email" required class="orbit-input">
+  <select name="reason" required class="orbit-input">
+    <option value="">Select Reason</option>
+    <option value="partnership">Partnership Inquiry</option>
+    <option value="services">Service Inquiry</option>
+    <option value="general">General Question</option>
+  </select>
+  <textarea name="message" rows="5" placeholder="Your Message" required class="orbit-textarea"></textarea>
+  <button type="submit" class="orbit-btn">Send Message</button>
+</form>
+
+<!-- Success message -->
+<p id="formSuccess" style="display:none; color:green; margin-top:1rem;">
+  ✅ Thank you! Your message has been sent successfully.
+</p>
+
     </div>
 
   </div>
@@ -725,11 +732,11 @@
     <div class="footer-links">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#solutions">Solutions</a></li>
-        <li><a href="#impact">Impact</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#partners">Partners</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#highlights-showcase">Highlights</a></li>
+        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#about-abc">About</a></li>
+        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#solatrix">Solutions</a></li>
+        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#stellar-map">Roadmap</a></li>
+        <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#connect-hub">Contact</a></li>
       </ul>
     </div>
 
@@ -1525,6 +1532,32 @@
     }
   });
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(function(){
+    $('#orbitForm').on('submit', function(e){
+      e.preventDefault(); // stop default redirect
+
+      const $form = $(this);
+      const formData = $form.serialize();
+
+      $.ajax({
+        url: "https://formsubmit.co/ajax/adediranstephen2000@gmail.com",
+        method: "POST",
+        data: formData,
+        dataType: "json",
+        success: function(){
+          $form.trigger("reset");                 // clear fields
+          $('#formSuccess').fadeIn();             // show success text
+        },
+        error: function(){
+          alert("Oops! Something went wrong, please try again.");
+        }
+      });
+    });
+  });
+</script>
+
 
 
 </body>
