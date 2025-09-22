@@ -21,11 +21,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 10%;
+  width: 100%;
   z-index: 9999;
   transition: background-color 0.3s ease;
   margin-top: 30px;
-  overflow-x: hidden;
 }
 
   .abc-nav {
@@ -2119,7 +2118,7 @@ font-family: 'Gotham Light', sans-serif;
   font-weight: 700;
   
   line-height: 1.2;
-
+  width: 100%;
   
 }
 .succession-title .word {
@@ -3403,4 +3402,7 @@ font-family: 'Gotham Light', sans-serif;
 }
 .abc-team-photo img{
   justify-self: left;
+}
+*{
+  outline: red 1px solid;
 }
