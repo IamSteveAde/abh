@@ -60,7 +60,7 @@
         <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#highlights-showcase">Highlights</a></li>
         <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#about-abc">About</a></li>
         <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#solatrix">Solutions</a></li>
-        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#stellar-map">Roadmap</a></li>
+        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#stellar-map">Why Africa</a></li>
         <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#connect-hub">Contact</a></li>
       </ul>
 
@@ -735,7 +735,7 @@
         <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#highlights-showcase">Highlights</a></li>
         <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#about-abc">About</a></li>
         <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#solatrix">Solutions</a></li>
-        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#stellar-map">Roadmap</a></li>
+        <li data-aos="zoom-out"  data-aos-duration="1500" data-aos-mirror="true"><a href="#stellar-map">Why Africa</a></li>
         <li data-aos="zoom-in"  data-aos-duration="1500" data-aos-mirror="true"><a href="#connect-hub">Contact</a></li>
       </ul>
     </div>
@@ -743,10 +743,17 @@
     <div class="footer-newsletter">
       <h4>Stay Updated</h4>
       <p>Subscribe to our newsletter for the latest insights and opportunities.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email" required />
-        <button type="submit">Subscribe</button>
-      </form>
+      <!-- Newsletter Form -->
+<form id="newsletterForm" class="newsletter-form">
+  <input type="email" name="email" placeholder="Enter your email" required />
+  <button type="submit">Subscribe</button>
+</form>
+
+<!-- Success message -->
+<p id="newsletterSuccess" style="display:none; color:green; margin-top:0.5rem;">
+  🎉 You’ve been subscribed successfully!
+</p>
+
     </div>
   </div>
 
@@ -1557,6 +1564,31 @@
     });
   });
 </script>
+<script>
+  $(function(){
+    $('#newsletterForm').on('submit', function(e){
+      e.preventDefault();
+
+      const $form = $(this);
+      const formData = $form.serialize();
+
+      $.ajax({
+        url: "https://formsubmit.co/ajax/adediranstephen2000@gmail.com", // <-- same email or a different one if needed
+        method: "POST",
+        data: formData,
+        dataType: "json",
+        success: function(){
+          $form.trigger("reset");
+          $('#newsletterSuccess').fadeIn();
+        },
+        error: function(){
+          alert("Something went wrong. Please try again later.");
+        }
+      });
+    });
+  });
+</script>
+
 
 
 
