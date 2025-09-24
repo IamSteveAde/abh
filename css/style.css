@@ -746,11 +746,23 @@ body {
 /* Grid Layout */
 .showcase-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 50px;
+  grid-template-columns: repeat(4, 1fr); /* force 4 per row */
+  gap: 20px;
   position: relative;
   margin-top: 60px;
 }
+@media (max-width: 1024px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* Cards */
 .showcase-card {
@@ -1872,7 +1884,7 @@ font-family: 'Gotham Light', sans-serif;
 
 .contact-title {
   font-size: 2.5rem;
-  background: linear-gradient(90deg, #ff8a3a, #ff3c78);
+  background: linear-gradient(90deg, #ff8a3a, #ff8a3a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 15px;
@@ -3402,4 +3414,288 @@ font-family: 'Gotham Light', sans-serif;
 }
 .abc-team-photo img{
   justify-self: left;
+}
+/* Section wrapper */
+.about-section {
+  padding: 80px 10%;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Layout */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+  text-align: justify;
+}
+
+/* Left: Text */
+.about-text {
+  flex: 1;
+  min-width: 320px;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  color: #030137;
+  margin-bottom: 20px;
+}
+
+.about-title span {
+  color: #ff8a3a;
+}
+
+.about-intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.about-subtitle {
+  font-size: 1.3rem;
+  margin: 20px 0 10px;
+  color: #030137;
+}
+
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.about-list li {
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.about-list li::before {
+  content: "✔";
+  color: #ff8a3a;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.about-highlight {
+  font-size: 1.1rem;
+  margin-top: 20px;
+  color: #030137;
+}
+
+/* Right: Image */
+.about-image {
+  flex: 1;
+  min-width: 320px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-list li {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+  }
+}
+.partnerships {
+  padding: 80px 20px;
+  background: #fff;
+}
+
+.partnerships .orbit-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.partnerships .orbit-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ff8a3a;
+}
+
+.partnerships .orbit-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Grid layout */
+.stellar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+/* Card styling */
+.stellar-card {
+ 
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.stellar-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.stellar-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.stellar-heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.stellar-desc {
+  font-size: 1rem;
+  color: #555;
+}
+/* Base reset */
+.nebula-contact {
+  padding: 80px 20px;
+  background: #fdfdfd;
+  color: #222;
+  width: 100%;
+  overflow-x: hidden;
+  
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Title & tagline */
+.contact-intro {
+  grid-column: span 2;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.contact-tagline {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Info block */
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+}
+
+.contact-info a {
+  color: #0077ff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Actions */
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn-strange {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: #030137;
+  color: #fff;
+  border: 2px solid #030137;
+}
+
+.btn-strange:hover {
+  background: transparent;
+  color: #030137;
+  text-decoration: none;
+}
+
+.btn-strange.ghost {
+  background: transparent;
+  border-color: #ffb86b;
+  color: #ffb86b;
+}
+
+.btn-strange.ghost:hover {
+  background: #ff8a3a;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-intro {
+    grid-column: span 1;
+  }
+
+  .contact-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
